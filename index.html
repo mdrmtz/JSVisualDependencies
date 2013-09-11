@@ -1,0 +1,48 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Doctrine : JSDoc parser">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css">
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/json2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="doctrine/doctrine.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    $(function() {
+      var code = [
+          'Queries a Baz for items.',
+          '@class ActivityMonitor',
+        '@constructor',
+        '@extends Base',
+        '@param {number} groupNum Subgroup id to query.',
+        '@param {string|number|null} term An itemName,or itemId, or null to search everything.',
+      ].join('\n');
+      $('#code').val(code).on('keyup paste change', function (ev) {
+        var comment = '/**\n' + $(this).val() + '\n*/';
+        try {
+          var result = doctrine.parse(comment, { unwrap : true });
+          $('#result').text(JSON.stringify(result, null, 4));
+        } catch (e) {
+          $('#result').text(e.toString());
+        }
+      }).change();
+    });
+    </script>
+    <title>JS Parser Demo</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <section>
+        <h3>JS Parser Demo</h3>
+        <p>using doctrine (<a href="http://github.com/Constellation/doctrine">doctrine</a>)
+        see <a href="https://developers.google.com/closure/compiler/docs/js-for-compiler">samples in Google Closure Compiler</a></p>
+        <strong>/**</strong>
+        <textarea id="code" style="width:100%;height:100px;"></textarea>
+        <strong>*/</strong>
+        <pre id="result" style="font-size:50%"></pre>
+            </section>
+      </div>
+    </body>
+</html>
