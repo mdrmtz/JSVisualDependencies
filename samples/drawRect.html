@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.29.1"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+var mouse = [480, 250],
+    count = 0;
+
+var svg = d3.select("body").append("svg:svg")
+    .attr("width", 960)
+    .attr("height", 500);
+
+var g = svg.selectAll("g")
+    .data(d3.range(10))
+    .enter().append("svg:g");
+
+g.append("svg:rect")
+    .attr("rx", 6)
+    .attr("ry", 6)
+    .attr("x", -12.5)
+    .attr("y", -12.5)
+    .attr("width", 50)
+    .attr("height", 50)
+    .style("fill", d3.scale.category20c())
+    ;
+
+g.map(function(d) {
+  return {center: [0, 0], angle: 0};
+});
+
+
+
+d3.timer(function() {
+  count++;
+  g.attr("transform", function(d, i) {
+      d.center[0] += (mouse[0] - d.center[0]) / (i + 5);
+      d.center[1] += (mouse[1] - d.center[1]) / (i + 5);
+      //d.angle += Math.sin((count + i) / 10) * 7;
+    return "translate(" + d.center + ")rotate(" + d.angle + ")";
+  });
+});
+
+    </script>
+  </body>
+</html>
