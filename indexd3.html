@@ -1,0 +1,70 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="D3.js : Visualizer">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <title>D3 Demo</title>
+    <script type="text/javascript">
+            var data = [32, 57, 112],
+            dataEnter = data.concat(293),
+            dataExit = data.slice(0, 2),
+            w = 360,
+            h = 180,
+            x = d3.scale.ordinal().domain([57, 32, 112]).rangePoints([0, w], 1),
+            y = d3.scale.ordinal().domain(data).rangePoints([0, h], 2);
+    </script>
+  </head>
+    <body>
+        <div class="wrapper">
+            <section>
+                <h4>D3 Demo</h4>
+                <div id="chart-2">
+                    <pre>var circle = svg.selectAll("circle");</pre>
+                    <button>Run</button>  
+                </div>
+                <script type="text/javascript">
+                    (function() {
+                      var svg = d3.select("#chart-2").append("svg")
+                          .attr("width", w)
+                          .attr("height", h);
+          /**            svg.append("circle")
+                                        .attr("cx", w/5)
+                                        .attr("cy", h/7)
+                                        .attr("r", 10);**/
+                        
+                      svg.selectAll(".little")
+                          .data(data)
+                          .enter().append("circle")
+                          .attr("class", "little")
+                          .attr("cx", x)
+                          .attr("cy", y)
+                          .attr("r", 12);
+                    
+                      d3.select("#chart-2 button").on("click", function() {
+                        svg.selectAll(".select").remove();
+                    
+                        svg.selectAll(".select")
+                            .data(data)
+                            .enter().append("circle")
+                            .attr("class", "select")
+                            .attr("cx", x)
+                            .attr("cy", y)
+                            .attr("r", 60)
+                            .style("fill", "none")
+                            .style("stroke", "red")
+                            .style("stroke-opacity", 1e-6)
+                            .style("stroke-width", 3)
+                            .transition()
+                            .duration(750)
+                            .attr("r", 12)
+                            .style("stroke-opacity", 1);
+                      });
+                    })();
+                </script>
+            </section>
+        </div>
+    </body>
+</html>
