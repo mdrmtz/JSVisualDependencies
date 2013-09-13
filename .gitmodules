@@ -1,0 +1,3 @@
+[submodule "yui-modules-explorer"]
+	path = yui-modules-explorer
+	url = https://github.com/mdrmtz/yui-modules-explorer.git

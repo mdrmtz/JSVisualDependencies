@@ -10,12 +10,12 @@
     <script type="text/javascript" charset="utf-8">
     $(function() {
       var code = [
-          'Queries a Baz for items.',
-          '@class ActivityMonitor',
-        '@constructor',
-        '@extends Base',
-        '@param {number} groupNum Subgroup id to query.',
-        '@param {string|number|null} term An itemName,or itemId, or null to search everything.',
+            'Queries a Baz for items.',
+            '@class DummyMonitor',
+            '@constructor',
+            '@extends Base',
+            '@param {number} groupNum Subgroup id to query.',
+            '@param {string|number|null} term An itemName,or itemId, or null to search everything.',
       ].join('\n');
       $('#code').val(code).on('keyup paste change', function (ev) {
         var comment = '/**\n' + $(this).val() + '\n*/';
