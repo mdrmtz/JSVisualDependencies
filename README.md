@@ -7,12 +7,14 @@ Using <ClosureBuilder> to scans JS files
 --------------------
 
 [ClosureBuilder](https://developers.google.com/closure/library/docs/closurebuilder)
+
     git clone https://code.google.com/p/closure-library/
 
 
-JSDoc parser <Doctrine>
+Doctrine <JSDoc parser>
 ------------
 [Doctrine](http://constellation.github.io/doctrine/demo/index.html)
+
     git clone https://github.com/Constellation/doctrine
 
 
@@ -24,12 +26,14 @@ Based in Annotating JavaScript for the Closure Compiler
 Reference <Dependo>
 -------------
 Visualize your CommonJS or AMD module dependencies in a force directed graph report.
+
     git clone https://github.com/auchenberg/dependo.git
 
-Visualizar
+Visual
 -------------
 Directed graph report - powered by <D3.js>
 [D3.js](http://d3js.org/)
+
     git clone https://github.com/mbostock/d3
 
 Documentation
